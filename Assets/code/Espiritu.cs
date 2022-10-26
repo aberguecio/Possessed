@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class player1 : MonoBehaviour
+public class Espiritu : MonoBehaviour
 {
     private Rigidbody2D  playerbody;
     private Vector2 input_move;
     public float speed;
-    public bool Player1_in;
+    public bool in_body;
 
 
     void Start()
@@ -26,13 +26,13 @@ public class player1 : MonoBehaviour
 
     public void Possess(InputAction.CallbackContext context){
         if (context.performed ){
-            Player1_in = !Player1_in;
+            in_body = !in_body;
         }
     }
 
     private void FixedUpdate()
     {
-        if (Player1_in){
+        if (!in_body){
             playerbody.MovePosition(playerbody.position + input_move * speed);
         }
 
